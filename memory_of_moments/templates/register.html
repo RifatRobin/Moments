@@ -2,7 +2,47 @@
 {% block title %}register{% endblock %}
 
 {% block content %}
-<center>
-    <h1>register page</h1>
-</center>
+<div class="container">
+
+    <form method="POST" action="/register/">
+        {% csrf_token %}
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="first_name">First Name</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="last_name">Last Name</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="username">User Name</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="password1">Password</label>
+                <input type="password" class="form-control" id="password1" name="password1" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="password2">ReType Password</label>
+                <input type="password" class="form-control" id="password2" name="password2" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-info">Register</button>
+        <button type="button" class="btn btn-success"><a href="">Home</a></button>
+    </form>
+
+</div>
 {% endblock %}
