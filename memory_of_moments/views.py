@@ -17,3 +17,7 @@ def add(request):
 
 def home(request):
     return render(request, "/view_memory.html")
+
+
+def delete(request):
+    return render(request, "/delete_memory.html")
