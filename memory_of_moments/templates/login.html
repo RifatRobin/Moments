@@ -2,10 +2,13 @@
 {% block title %}login{% endblock %}
 
 {% block content %}
+<center>
+    {% for i in messages %}
+    <p style="color: brown;">{{i}}</p><br>
+    {% endfor %}
 
-{% for i in messages %}
-{{i}} <br>
-{% endfor %}
+</center>
+
 
 <div class="container">
     <form method="POST" action="/">

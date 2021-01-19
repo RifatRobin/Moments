@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth, User
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from .models import moments
@@ -62,6 +63,7 @@ def logout(request):
     return redirect("/")
 
 
+@login_required(login_url='login')
 def add(request):
     if request.method == 'POST':
         mmnts = request.POST.get('mmnts', '')
@@ -73,10 +75,13 @@ def add(request):
         return render(request, "add_memory.html")
 
 
+@login_required(login_url='login')
 def home(request):
+    log_user = request.user
+    m = moments.objects.filter(user=log_user)
+    return render(request, "view_memory.html", {'m': m})
 
-    return render(request, "view_memory.html")
 
-
+@login_required(login_url='login')
 def delete(request):
     return render(request, "delete_memory.html")

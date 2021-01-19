@@ -6,8 +6,5 @@ from django.contrib.auth.models import User
 
 class moments(models.Model):
     contents = models.TextField()
-    dt = models.DateField(auto_now_add=True)
+    dt = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.dt
