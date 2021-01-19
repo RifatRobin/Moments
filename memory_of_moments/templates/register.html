@@ -1,10 +1,15 @@
-{% extends "/base.html" %}
+{% extends "base.html" %}
 {% block title %}register{% endblock %}
 
 {% block content %}
+{% for i in messages %}
+{{i}} <br>
+{% endfor %}
+
+
 <div class="container">
 
-    <form method="POST" action="/register/">
+    <form method="POST" action="/register">
         {% csrf_token %}
 
         <div class="form-row">
@@ -40,8 +45,8 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-info">Register</button>
-        <button type="button" class="btn btn-success"><a href="">Home</a></button>
+        <button type="submit" class="btn btn-info">Sign Up</button>
+        <a href="{% url 'login' %}"><button type="button" class="btn btn-success">Login</button></a>
     </form>
 
 </div>

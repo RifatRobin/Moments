@@ -1,8 +1,45 @@
-{% extends "/base.html" %}
+{% extends "base.html" %}
 {% block title %}view memory{% endblock %}
 
 {% block content %}
+<style>
+    .lgt {
+        float: right;
+        position: relative;
+        right: 10rem;
+    }
+
+    .amb {
+        position: relative;
+        text-decoration: none;
+        left: 47.5%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+
+
+
+
+<a href="{% url 'logout' %}"><button type="button" class="btn btn-danger lgt">Logout</button></a>
+
 <center>
-    <h1>view memory page</h1>
+    <h2>
+
+        {% if user.is_authenticated %}
+        <p class="grettings"></p><b style="color: rgb(255, 153, 36);">{{user.first_name}}</b>'s Moments</p>
+        {% endif %}
+
+    </h2>
+    {% for i in messages %}
+    {{i}} <br>
+    {% endfor %}
 </center>
+<br><br><br><br><br><br><br>
+<a href="{% url 'add' %}" style="text-decoration: none;">
+    <button type="button" class="btn btn-dark amb">Add Moments</button>
+</a>
+
+
 {% endblock %}

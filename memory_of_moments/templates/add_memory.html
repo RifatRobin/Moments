@@ -1,8 +1,26 @@
-{% extends "/base.html" %}
+{% extends "base.html" %}
 {% block title %}add memory{% endblock %}
 
 {% block content %}
 <center>
-    <h1>add memory page</h1>
+    <h1 style="color:  rgb(255, 153, 36);">Add memory</h1>
 </center>
+<br><br><br>
+<div class="container">
+
+    <form method='POST' action="{% url 'add' %}">
+        {% csrf_token %}
+        <div class="form-floating">
+            <label for="mmnts"><b>Moments please</b></label>
+            <textarea class="form-control" placeholder="Leave a moment here" id="mmnts" style="height: 100px"
+                name="mmnts"></textarea>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success">ADD</button>
+        <a href="{% url 'home' %}" style="text-decoration: none;">
+            <button type="button" class="btn btn-info">Home</button>
+        </a>
+    </form>
+
+</div>
 {% endblock %}
